@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Covo dei Giocatori - Centro Esperienziale e Cultura Ludica</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0B0713',       /* Deep space purple/black */
+                            panel: '#150F24',      /* Card and section background */
+                            primary: '#5D2E8C',    /* Royal purple */
+                            secondary: '#A370D7',  /* Neon lavender */
+                            accent: '#FF4071',     /* Vivid magenta highlight */
+                            green: '#4CAF50'       /* Success green */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0713;
+            color: #F3EFF7;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0B0713;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #5D2E8C;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #A370D7;
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-accent selection:text-white">
+
+    <!-- NAVIGATION BAR -->
+    <nav class="sticky top-0 z-50 bg-[#0B0713]/90 backdrop-blur-md border-b border-brand-primary/20 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center shadow-lg shadow-brand-primary/30">
+                        <i class="fa-solid fa-dice-d20 text-white text-xl animate-pulse"></i>
+                    </div>
+                    <div>
+                        <span class="text-xl font-extrabold tracking-wider bg-gradient-to-r from-white via-brand-secondary to-brand-accent bg-clip-text text-transparent">
+                            IL COVO DEI GIOCATORI
+                        </span>
+                        <span class="block text-[9px] text-gray-400 tracking-widest uppercase font-semibold">Luganese • Svizzera</span>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#profilo" class="text-gray-300 hover:text-brand-accent font-medium text-sm transition-colors">Il Profilo</a>
+                    <a href="#servizi" class="text-gray-300 hover:text-brand-accent font-medium text-sm transition-colors">Servizi in Sala</a>
+                    <a href="#valutazione" class="text-gray-300 hover:text-brand-accent font-medium text-sm transition-colors">Valutazione Carte</a>
+                    <a href="#spedizioni" class="text-gray-300 hover:text-brand-accent font-medium text-sm transition-colors">Spedizioni</a>
+                    <a href="#media" class="text-gray-300 hover:text-brand-accent font-medium text-sm transition-colors">Podcast & Blog</a>
+                </div>
+
+                <!-- Action Button -->
+                <div class="hidden md:block">
+                    <a href="#contatti" class="px-5 y-2.5 bg-gradient-to-r from-brand-primary to-brand-accent hover:from-brand-accent hover:to-brand-primary text-white text-sm font-semibold rounded-xl transition-all duration-300 shadow-md shadow-brand-primary/20 transform hover:-translate-y-0.5 inline-block py-2.5">
+                        <i class="fa-solid fa-calendar-check mr-2"></i>Prenota un Tavolo
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-300 hover:text-white focus:outline-none" aria-label="Toggle Menu">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-panel/95 border-b border-brand-primary/30 px-4 pt-2 pb-6 space-y-3">
+            <a href="#profilo" class="block text-gray-300 hover:text-brand-accent font-medium text-base py-2 border-b border-gray-800">Il Profilo</a>
+            <a href="#servizi" class="block text-gray-300 hover:text-brand-accent font-medium text-base py-2 border-b border-gray-800">Servizi in Sala</a>
+            <a href="#valutazione" class="block text-gray-300 hover:text-brand-accent font-medium text-base py-2 border-b border-gray-800">Valutazione Carte</a>
+            <a href="#spedizioni" class="block text-gray-300 hover:text-brand-accent font-medium text-base py-2 border-b border-gray-800">Spedizioni</a>
+            <a href="#media" class="block text-gray-300 hover:text-brand-accent font-medium text-base py-2 border-b border-gray-800">Podcast & Blog</a>
+            <a href="#contatti" class="block w-full text-center px-4 py-3 bg-gradient-to-r from-brand-primary to-brand-accent text-white font-bold rounded-xl shadow-lg">
+                Prenota un Tavolo
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="relative overflow-hidden py-24 lg:py-32">
+        <div class="absolute inset-0 bg-gradient-to-b from-brand-primary/10 via-transparent to-brand-dark z-0"></div>
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary/20 rounded-full blur-[120px] -z-10"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-accent/15 rounded-full blur-[120px] -z-10"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-brand-primary/20 border border-brand-secondary/30 text-xs font-semibold text-brand-secondary tracking-wider uppercase">
+                        <i class="fa-solid fa-location-dot"></i> Lugano, Canton Ticino
+                    </span>
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-none">
+                        Il punto d'incontro per la <br>
+                        <span class="bg-gradient-to-r from-brand-secondary via-brand-accent to-purple-400 bg-clip-text text-transparent">
+                            Cultura Ludica
+                        </span>
+                        nel Luganese.
+                    </h1>
+                    <p class="text-base sm:text-lg text-gray-400 max-w-2xl mx-auto lg:mx-0">
+                        Non un semplice negozio di giochi da tavolo e carte collezionabili, ma un vero centro esperienziale. Scopri la nostra sala polivalente dedicata a tornei, corsi di pittura e consulenze specializzate.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <a href="#servizi" class="px-8 py-4 bg-gradient-to-r from-brand-primary to-brand-accent hover:opacity-90 text-white font-bold rounded-2xl transition-all shadow-lg shadow-brand-accent/20">
+                            Esplora i Servizi
+                        </a>
+                        <a href="#spedizioni" class="px-8 py-4 bg-brand-panel hover:bg-gray-800 text-gray-300 font-semibold rounded-2xl border border-gray-700/50 transition-all">
+                            Calcolatore Spedizioni <i class="fa-solid fa-arrow-right ml-2 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Visual -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-[380px] sm:max-w-[420px] lg:max-w-none">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-brand-primary to-brand-accent rounded-3xl rotate-3 scale-105 opacity-20 blur-md"></div>
+                        <img src="https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=800&h=800&q=80" alt="Serata giochi da tavolo a Il Covo dei Giocatori" class="relative z-10 rounded-3xl border border-brand-primary/30 shadow-2xl object-cover w-full h-[400px] lg:h-[450px]" onerror="this.src='https://placehold.co/600x600/150f24/f3eff7?text=Il+Covo+dei+Giocatori'">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    <!-- ABOUT SECTION (IL PROFILO) -->
+    <section id="profilo" class="py-20 bg-brand-panel/40 border-y border-brand-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                <!-- Text Content -->
+                <div class="lg:col-span-6 space-y-6">
+                    <h2 class="text-3xl font-extrabold text-white">
+                        La Nostra Visione: <br>
+                        <span class="text-brand-secondary">Dall'Online all'Aggregazione Reale</span>
+                    </h2>
+                    <div class="h-1 w-20 bg-brand-accent rounded-full"></div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Dietro **Il Covo dei Giocatori** c'è Marco, 35 anni, ex informatico professionista e da sempre profondo appassionato di cultura ludica e collezionismo d'élite. 
+                    </p>
+                    <blockquote class="border-l-4 border-brand-accent pl-4 italic text-gray-400">
+                        "Dopo aver gestito per anni una community di gioco online, ho sentito la necessità di investire in uno spazio fisico dove l'aggregazione sociale potesse tornare ad essere reale, tangibile e condivisa."
+                    </blockquote>
+                    <p class="text-gray-300 leading-relaxed">
+                        La nostra missione non è solo proporre prodotti di qualità, ma offrire competenza, consulenza e uno spazio accogliente per valorizzare l'esperienza di ogni singolo appassionato, dal giocatore occasionale al collezionista più esigente.
+                    </p>
+                </div>
+
+                <!-- Stats / Cards Grid -->
+                <div class="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="p-6 bg-brand-panel border border-brand-primary/20 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-secondary mb-4 text-xl">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Community Reale</h3>
+                        <p class="text-sm text-gray-400">Uno spazio per socializzare e condividere la propria passione faccia a faccia.</p>
+                    </div>
+
+                    <div class="p-6 bg-brand-panel border border-brand-primary/20 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-secondary mb-4 text-xl">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Valore Aggiunto</h3>
+                        <p class="text-sm text-gray-400">Eventi strutturati, supporto tecnico e corsi formativi con professionisti.</p>
+                    </div>
+
+                    <div class="p-6 bg-brand-panel border border-brand-primary/20 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-secondary mb-4 text-xl">
+                            <i class="fa-solid fa-shield-halved"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Valutazione Carte</h3>
+                        <p class="text-sm text-gray-400">Esperti certificati per valutare le tue collezioni di Magic e Pokémon.</p>
+                    </div>
+
+                    <div class="p-6 bg-brand-panel border border-brand-primary/20 rounded-2xl">
+                        <div class="w-12 h-12 rounded-xl bg-brand-primary/20 flex items-center justify-center text-brand-secondary mb-4 text-xl">
+                            <i class="fa-solid fa-compass"></i>
+                        </div>
+                        <h3 class="text-lg font-bold text-white mb-2">Hub Locale</h3>
+                        <p class="text-sm text-gray-400">Il punto di riferimento ludico d'eccellenza per tutto il Luganese.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION (I SERVIZI IN SALA) -->
+    <section id="servizi" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-brand-accent uppercase">I Servizi Core</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">La Nostra Sala Polivalente</h2>
+                <p class="text-gray-400 text-base">Un ambiente progettato per accogliere eventi ufficiali, corsi di pittura e sessioni di gioco libero, massimizzando il valore di ogni esperienza.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Service 1 -->
+                <div class="bg-brand-panel border border-brand-primary/10 rounded-2xl overflow-hidden hover:border-brand-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=800&h=530&q=80" alt="Amici che provano nuovi giochi in scatola" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-brand-panel/90 px-3 py-1 rounded-md text-xs font-bold text-brand-secondary border border-brand-primary/30">LUDOTECA</div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white">Serate di Test Giochi</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Ogni settimana apriamo la nostra sala ai test delle novità editoriali più calde. Potrai provare i giochi spiegati dal nostro staff e trovare nuovi amici al tavolo.
+                        </p>
+                        <div class="pt-2">
+                            <span class="text-xs font-medium text-brand-secondary"><i class="fa-solid fa-clock mr-1"></i> Ogni Martedì e Venerdì sera</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-brand-panel border border-brand-primary/10 rounded-2xl overflow-hidden hover:border-brand-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=800&h=530&q=80" alt="Carte collezionabili sul tavolo da gioco" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-brand-panel/90 px-3 py-1 rounded-md text-xs font-bold text-brand-accent border border-brand-primary/30">COMPETIZIONE</div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white">Tornei Ufficiali</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Organizziamo eventi competitivi e amichevoli per i circuiti GCC e giochi da tavolo. Metti alla prova le tue abilità in un ambiente sano, regolamentato e con ricchi premi in palio.
+                        </p>
+                        <div class="pt-2">
+                            <span class="text-xs font-medium text-brand-accent"><i class="fa-solid fa-trophy mr-1"></i> Classifiche sanzionate ufficiali</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-brand-panel border border-brand-primary/10 rounded-2xl overflow-hidden hover:border-brand-primary/40 transition-all duration-300 group">
+                    <div class="h-48 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1506784983877-45594efa4cbe?auto=format&fit=crop&w=800&h=530&q=80" alt="Dettaglio pittura di precisione e pennelli" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute top-4 left-4 bg-brand-panel/90 px-3 py-1 rounded-md text-xs font-bold text-brand-green border border-brand-primary/30">Hobby & Arte</div>
+                    </div>
+                    <div class="p-6 space-y-4">
+                        <h3 class="text-xl font-bold text-white">Corsi di Pittura Miniature</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Impara le tecniche professionali per dare vita alle tue miniature. Dalle basi della stesura del colore alle sfumature avanzate, sotto la guida di esperti del settore.
+                        </p>
+                        <div class="pt-2">
+                            <span class="text-xs font-medium text-brand-green"><i class="fa-solid fa-paintbrush mr-1"></i> Kit e colori inclusi in sede</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CARD APPRAISAL (VALUTAZIONE CARTE RARE) -->
+    <section id="valutazione" class="py-20 bg-brand-panel/30 border-t border-brand-primary/10 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Graphic Representation -->
+                <div class="lg:col-span-5 order-2 lg:order-1 relative">
+                    <div class="bg-gradient-to-br from-brand-panel to-brand-primary/20 p-8 rounded-3xl border border-brand-primary/30 shadow-xl space-y-6">
+                        <div class="flex justify-between items-center border-b border-gray-800 pb-4">
+                            <span class="text-sm font-bold text-gray-400">Card Rating Desk</span>
+                            <span class="text-xs text-brand-accent font-semibold px-2.5 py-1 rounded bg-brand-accent/10 border border-brand-accent/20">VALUTATO</span>
+                        </div>
+                        <div class="space-y-4">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Autenticità</span>
+                                <span class="text-white font-bold">100% Verificato</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Stato di Conservazione</span>
+                                <span class="text-brand-secondary font-bold">Near Mint (NM)</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-gray-400">Valutazione Mercato</span>
+                                <span class="text-white font-bold">CHF 1'250.00</span>
+                            </div>
+                        </div>
+                        <div class="p-4 bg-brand-dark rounded-xl border border-brand-primary/20 flex gap-4 items-center">
+                            <i class="fa-solid fa-magnifying-glass text-brand-accent text-xl"></i>
+                            <p class="text-xs text-gray-400">Esame microscopico di bordi, centratura e superficie svolto in sede.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text Info -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-brand-accent uppercase">Consulenza Certificata</span>
+                    <h2 class="text-3xl font-extrabold text-white">Servizio di Valutazione Carte Rare</h2>
+                    <div class="h-1 w-20 bg-brand-accent rounded-full"></div>
+                    <p class="text-gray-300 leading-relaxed">
+                        Possiedi carte storiche di **Magic: The Gathering**, **Pokémon** o **Yu-Gi-Oh!** e vuoi conoscerne il valore effettivo sul mercato svizzero ed europeo? 
+                    </p>
+                    <p class="text-gray-300 leading-relaxed">
+                        Il nostro servizio offre una consulenza oggettiva basata sulle analisi dello stato di usura fisica e sull'andamento delle borse di scambio internazionali. Forniamo stime professionali sia per singole gemme che per intere collezioni.
+                    </p>
+                    <div class="pt-4 flex flex-wrap gap-4">
+                        <a href="#contatti" class="px-6 py-3 bg-brand-primary hover:bg-brand-primary/80 text-white text-sm font-semibold rounded-xl transition-all">
+                            Richiedi Appuntamento
+                        </a>
+                        <span class="inline-flex items-center text-sm text-gray-400"><i class="fa-solid fa-circle-check text-brand-green mr-2"></i> Stime trasparenti e tracciate</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SWISS SHIPPING CALCULATOR (WEBAPP INTEGRATA) -->
+    <section id="spedizioni" class="py-24 bg-gradient-to-b from-brand-dark to-brand-panel/40 border-t border-brand-primary/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-brand-secondary uppercase">E-Shop Utilities</span>
+                <h2 class="text-3xl font-extrabold text-white">Calcolatore Spedizioni Svizzera</h2>
+                <p class="text-gray-400">Un widget trasparente ed istantaneo per conoscere in anticipo le spese di spedizione Postali.</p>
+            </div>
+
+            <!-- Interfaccia Webapp -->
+            <div class="bg-brand-panel border border-brand-primary/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-40 h-40 bg-brand-secondary/5 rounded-full blur-3xl -z-10"></div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    
+                    <!-- Input Controls -->
+                    <div class="space-y-6">
+                        <!-- Step 1: Weight Selector -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-300">1. Peso del Pacco (Incluso imballaggio):</label>
+                            <select id="package-weight" class="w-full bg-brand-dark text-white border border-brand-primary/30 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors">
+                                <option value="economy-light" data-weight="2" data-economy="8.50" data-priority="10.50">Fino a 2 Kg (Standard)</option>
+                                <option value="economy-medium" data-weight="10" data-economy="11.50" data-priority="14.00">Da 2 a 10 Kg (Medio)</option>
+                                <option value="economy-heavy" data-weight="30" data-economy="20.50" data-priority="23.00">Da 10 a 30 Kg (Pesante)</option>
+                            </select>
+                        </div>
+
+                        <!-- Step 2: Delivery Speed -->
+                        <div class="space-y-2">
+                            <label class="block text-sm font-bold text-gray-300">2. Metodo di Consegna (La Posta Svizzera):</label>
+                            <div class="grid grid-cols-2 gap-4">
+                                <button id="btn-economy" class="py-3 px-4 rounded-xl border border-brand-accent bg-brand-accent/10 text-white font-semibold transition-all flex flex-col items-center justify-center gap-1">
+                                    <span class="text-xs text-brand-secondary">B-Post (Economy)</span>
+                                    <span class="text-[10px] text-gray-400">2-3 giorni lavorativi</span>
+                                </button>
+                                <button id="btn-priority" class="py-3 px-4 rounded-xl border border-brand-primary/30 bg-brand-dark text-gray-400 font-semibold hover:border-brand-primary transition-all flex flex-col items-center justify-center gap-1">
+                                    <span class="text-xs">A-Post (Priority)</span>
+                                    <span class="text-[10px] text-gray-400">Consegna giorno successivo</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Output Box -->
+                    <div class="bg-brand-dark/50 border border-brand-primary/20 p-6 rounded-2xl flex flex-col items-center justify-center text-center space-y-4">
+                        <div class="w-16 h-16 rounded-full bg-brand-primary/10 flex items-center justify-center text-brand-secondary text-2xl">
+                            <i class="fa-solid fa-truck-fast"></i>
+                        </div>
+                        <div>
+                            <span class="text-xs text-gray-400 uppercase tracking-widest block mb-1">Costo della spedizione</span>
+                            <div class="text-4xl font-extrabold text-white">
+                                <span class="text-brand-secondary">CHF </span><span id="shipping-result">8.50</span>
+                            </div>
+                        </div>
+                        <div class="text-xs text-gray-500 max-w-[200px]">
+                            Le tariffe sono calcolate nel rispetto delle direttive ufficiali de *La Posta Svizzera*.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PODCAST & BLOG SECTION -->
+    <section id="media" class="py-24 border-t border-brand-primary/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-brand-accent uppercase">I Nostri Media</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white">Ascolta, Leggi, Gioca</h2>
+                <p class="text-gray-400 text-base">Resta aggiornato con le recensioni professionali ed approfondite scritte e raccontate da Marco.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Featured Podcast (EPISODE 1) -->
+                <div class="lg:col-span-6 bg-brand-panel border border-brand-primary/20 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-accent/10 border border-brand-accent/20 text-xs font-bold text-brand-accent">
+                                <span class="w-2 h-2 rounded-full bg-brand-accent animate-ping"></span> NUOVO EPISODIO
+                            </span>
+                            <span class="text-xs text-gray-400">S1 • Ep 1 • 60 secondi</span>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-white">Podcast Settimanale: Speciale "Swiss Monopoly"</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Ascolta la nostra recensione rapida dell'edizione Svizzera di Monopoly. Un focus oggettivo e approfondito sulle novità grafiche, le meccaniche modernizzate, i testi rivisitati e i target di riferimento di questo classico.
+                        </p>
+                    </div>
+
+                    <!-- Mini Audio Player Interface (Immersive) -->
+                    <div class="bg-brand-dark rounded-2xl p-4 border border-brand-primary/10 flex items-center gap-4">
+                        <button id="podcast-play-btn" class="w-12 h-12 rounded-full bg-brand-accent hover:opacity-90 flex items-center justify-center text-white text-lg transition-all focus:outline-none shadow-lg shadow-brand-accent/20">
+                            <i id="play-icon" class="fa-solid fa-play ml-1"></i>
+                        </button>
+                        <div class="flex-1 space-y-1">
+                            <span class="block text-xs font-bold text-white">Swiss Monopoly: Recensione e Target</span>
+                            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                                <div id="podcast-progress" class="bg-brand-accent h-full w-0 transition-all duration-300"></div>
+                            </div>
+                            <div class="flex justify-between text-[10px] text-gray-500">
+                                <span id="podcast-time">0:00</span>
+                                <span>1:00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Featured Blog Post -->
+                <div class="lg:col-span-6 bg-brand-panel border border-brand-primary/20 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="text-xs font-bold text-brand-secondary uppercase tracking-widest">Articolo in primo piano</span>
+                            <span class="text-xs text-gray-400">Pubblicato Oggi</span>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-white">L'evoluzione del Collezionismo e dei Servizi Ludici nel Canton Ticino</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            Perché i negozi di giochi vecchio stile non bastano più? Analizziamo la crescente domanda di spazi d'aggregazione fisici organizzati, corsi di pittura e sessioni professionali nel Luganese. Una riflessione sulla nascita del nostro centro esperienziale.
+                        </p>
+                    </div>
+
+                    <div class="pt-4 border-t border-gray-800 flex justify-between items-center">
+                        <a href="#contatti" class="text-brand-secondary hover:text-brand-accent font-bold text-sm flex items-center gap-2 group transition-colors">
+                            Leggi l'articolo sul blog <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING & CONTACT FORM (SALA POLIVALENTE & APPUNTAMENTI) -->
+    <section id="contatti" class="py-24 bg-brand-panel/30 border-t border-brand-primary/10">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 space-y-4">
+                <span class="text-xs font-bold tracking-widest text-brand-accent uppercase">Prenotazioni & Contatti</span>
+                <h2 class="text-3xl font-extrabold text-white">Unisciti al Covo dei Giocatori</h2>
+                <p class="text-gray-400 text-base">Riserva un tavolo nella sala polivalente per testare giochi, iscriverti ai tornei o richiedere una valutazione di carte.</p>
+            </div>
+
+            <form id="booking-form" class="bg-brand-panel border border-brand-primary/20 rounded-3xl p-8 space-y-6 shadow-2xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Nome -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-300">Nome Completo</label>
+                        <input type="text" required class="w-full bg-brand-dark text-white border border-brand-primary/20 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors" placeholder="es. Marco Rossi">
+                    </div>
+                    <!-- Email -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-300">Indirizzo Email</label>
+                        <input type="email" required class="w-full bg-brand-dark text-white border border-brand-primary/20 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors" placeholder="es. rossi@example.ch">
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <!-- Tipo Servizio -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-300">Servizio d'Interesse</label>
+                        <select required class="w-full bg-brand-dark text-white border border-brand-primary/20 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors">
+                            <option value="test">Serata Test Giochi</option>
+                            <option value="tornei">Iscrizione Tornei Ufficiali</option>
+                            <option value="pittura">Corso di Pittura Miniature</option>
+                            <option value="valutazione">Valutazione Carte Rare</option>
+                        </select>
+                    </div>
+                    <!-- Numero Persone -->
+                    <div class="space-y-2">
+                        <label class="block text-sm font-semibold text-gray-300">Numero di Partecipanti</label>
+                        <input type="number" min="1" max="10" required class="w-full bg-brand-dark text-white border border-brand-primary/20 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors" placeholder="1">
+                    </div>
+                </div>
+
+                <!-- Messaggio -->
+                <div class="space-y-2">
+                    <label class="block text-sm font-semibold text-gray-300">Messaggio / Note Speciali</label>
+                    <textarea class="w-full h-32 bg-brand-dark text-white border border-brand-primary/20 rounded-xl px-4 py-3 focus:outline-none focus:border-brand-accent transition-colors resize-none" placeholder="Indica il gioco che preferisci testare o l'elenco delle carte da far valutare..."></textarea>
+                </div>
+
+                <!-- Custom feedback box instead of alert() -->
+                <div id="form-feedback" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="w-full py-4 bg-gradient-to-r from-brand-primary to-brand-accent hover:opacity-90 text-white font-bold rounded-xl transition-all shadow-lg shadow-brand-accent/20">
+                    Invia Richiesta di Prenotazione
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-dark py-12 border-t border-brand-primary/15 text-gray-500 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+            <div class="flex items-center justify-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-primary to-brand-accent flex items-center justify-center text-white">
+                    <i class="fa-solid fa-dice-d20"></i>
+                </div>
+                <span class="font-extrabold text-white tracking-widest uppercase">Il Covo dei Giocatori</span>
+            </div>
+            <p class="max-w-md mx-auto">
+                Spazio polivalente di cultura ludica e collezionismo d'élite.
+            </p>
+            <div class="flex justify-center space-x-6 text-gray-400">
+                <span class="hover:text-white transition-colors"><i class="fa-solid fa-location-dot text-brand-accent mr-1"></i> Luganese, Ticino (CH)</span>
+                <span class="hover:text-white transition-colors"><i class="fa-solid fa-envelope text-brand-secondary mr-1"></i> info@ilcovodeigiocatori.ch</span>
+            </div>
+            <p class="text-xs text-gray-600">
+                &copy; 2026 Il Covo dei Giocatori. Tutti i diritti riservati. Sviluppato nel rispetto dei processi operativi concordati.
+            </p>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE JAVASCRIPT LOGIC -->
+    <script>
+        // Mobile menu toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Interactive Shipping Calculator (La Posta Svizzera Rules)
+        const weightSelect = document.getElementById('package-weight');
+        const btnEconomy = document.getElementById('btn-economy');
+        const btnPriority = document.getElementById('btn-priority');
+        const resultDisplay = document.getElementById('shipping-result');
+
+        let isEconomy = true; // State of delivery choice
+
+        function updateShippingPrice() {
+            const selectedOption = weightSelect.options[weightSelect.selectedIndex];
+            const economyPrice = selectedOption.getAttribute('data-economy');
+            const priorityPrice = selectedOption.getAttribute('data-priority');
+
+            if (isEconomy) {
+                resultDisplay.textContent = parseFloat(economyPrice).toFixed(2);
+                btnEconomy.classList.add('border-brand-accent', 'bg-brand-accent/10', 'text-white');
+                btnEconomy.classList.remove('border-brand-primary/30', 'bg-brand-dark', 'text-gray-400');
+                btnPriority.classList.remove('border-brand-accent', 'bg-brand-accent/10', 'text-white');
+                btnPriority.classList.add('border-brand-primary/30', 'bg-brand-dark', 'text-gray-400');
+            } else {
+                resultDisplay.textContent = parseFloat(priorityPrice).toFixed(2);
+                btnPriority.classList.add('border-brand-accent', 'bg-brand-accent/10', 'text-white');
+                btnPriority.classList.remove('border-brand-primary/30', 'bg-brand-dark', 'text-gray-400');
+                btnEconomy.classList.remove('border-brand-accent', 'bg-brand-accent/10', 'text-white');
+                btnEconomy.classList.add('border-brand-primary/30', 'bg-brand-dark', 'text-gray-400');
+            }
+        }
+
+        weightSelect.addEventListener('change', updateShippingPrice);
+        
+        btnEconomy.addEventListener('click', () => {
+            isEconomy = true;
+            updateShippingPrice();
+        });
+
+        btnPriority.addEventListener('click', () => {
+            isEconomy = false;
+            updateShippingPrice();
+        });
+
+        // Initialize price on page load
+        updateShippingPrice();
+
+        // Simulated Podcast Player Logic (1-Minute Swiss Monopoly review)
+        const podcastBtn = document.getElementById('podcast-play-btn');
+        const playIcon = document.getElementById('play-icon');
+        const progressBar = document.getElementById('podcast-progress');
+        const timeDisplay = document.getElementById('podcast-time');
+        
+        let isPlaying = false;
+        let playInterval;
+        let secondsPassed = 0;
+        const totalDuration = 60; // 1 minute podcast
+
+        podcastBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                clearInterval(playInterval);
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                isPlaying = false;
+            } else {
+                playIcon.classList.remove('fa-play');
+                playIcon.classList.add('fa-pause');
+                isPlaying = true;
+
+                playInterval = setInterval(() => {
+                    secondsPassed++;
+                    if (secondsPassed > totalDuration) {
+                        clearInterval(playInterval);
+                        secondsPassed = 0;
+                        progressBar.style.width = '0%';
+                        timeDisplay.textContent = "0:00";
+                        playIcon.classList.remove('fa-pause');
+                        playIcon.classList.add('fa-play');
+                        isPlaying = false;
+                        return;
+                    }
+
+                    const progressPercentage = (secondsPassed / totalDuration) * 100;
+                    progressBar.style.width = `${progressPercentage}%`;
+                    
+                    const min = Math.floor(secondsPassed / 60);
+                    const sec = secondsPassed % 60;
+                    timeDisplay.textContent = `${min}:${sec < 10 ? '0' : ''}${sec}`;
+                }, 1000);
+            }
+        });
+
+        // Interactive booking form handler (Custom validation & premium feedback)
+        const bookingForm = document.getElementById('booking-form');
+        const feedbackDiv = document.getElementById('form-feedback');
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Show premium success feedback
+            feedbackDiv.className = "p-4 rounded-xl text-sm font-medium bg-brand-green/10 border border-brand-green/30 text-brand-green";
+            feedbackDiv.innerHTML = "<i class='fa-solid fa-circle-check mr-2'></i> Richiesta inviata con successo! Marco ed il suo staff ti contatteranno all'indirizzo email fornito entro 24 ore.";
+            feedbackDiv.classList.remove('hidden');
+
+            // Reset Form Fields smoothly
+            bookingForm.reset();
+
+            // Re-hide feedback after some time
+            setTimeout(() => {
+                feedbackDiv.classList.add('hidden');
+            }, 6000);
+        });
+    </script>
+</body>
+</html>
