@@ -460,15 +460,74 @@
                     </div>
 
                     <div class="pt-4 border-t border-gray-800 flex justify-between items-center">
-                        <a href="#contatti" class="text-brand-secondary hover:text-brand-accent font-bold text-sm flex items-center gap-2 group transition-colors">
+                        <button id="read-blog-btn" class="text-brand-secondary hover:text-brand-accent font-bold text-sm flex items-center gap-2 group transition-colors focus:outline-none">
                             Leggi l'articolo sul blog <i class="fa-solid fa-arrow-right group-hover:translate-x-1 transition-transform"></i>
-                        </a>
+                        </button>
                     </div>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- BLOG MODAL -->
+    <div id="blog-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-brand-dark/85 backdrop-blur-md flex items-center justify-center p-4">
+        <!-- Modal Box -->
+        <div class="relative w-full max-w-3xl bg-brand-panel border border-brand-primary/30 rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col transform scale-95 opacity-0 transition-all duration-300" id="blog-modal-content">
+            <!-- Modal Header -->
+            <div class="p-6 border-b border-brand-primary/20 flex justify-between items-start bg-brand-dark/40">
+                <div>
+                    <span class="text-xs font-bold text-brand-accent uppercase tracking-widest block mb-1">Cultura Ludica & Collezionismo</span>
+                    <h3 class="text-xl sm:text-2xl font-extrabold text-white">L'evoluzione del Collezionismo e dei Servizi Ludici nel Canton Ticino</h3>
+                </div>
+                <button id="close-blog-btn" class="text-gray-400 hover:text-white p-2 rounded-xl hover:bg-brand-primary/20 transition-all focus:outline-none" aria-label="Chiudi articolo">
+                    <i class="fa-solid fa-xmark text-xl"></i>
+                </button>
+            </div>
+            <!-- Modal Body -->
+            <div class="p-6 sm:p-8 overflow-y-auto space-y-6 text-gray-300 leading-relaxed text-sm sm:text-base">
+                <!-- Image -->
+                <img src="https://images.unsplash.com/photo-1543536448-d209d2d13a1c?auto=format&fit=crop&w=1200&h=600&q=80" alt="Dettaglio carte collezionabili e miniature" class="w-full h-56 sm:h-64 object-cover rounded-2xl border border-brand-primary/20 mb-4" onerror="this.src='https://placehold.co/1200x600/150f24/f3eff7?text=Cultura+Ludica+Ticino'">
+                
+                <div class="flex items-center gap-4 text-xs text-gray-400 mb-2 border-b border-gray-800 pb-4">
+                    <span><i class="fa-solid fa-user text-brand-secondary mr-1"></i> Di Marco (Fondatore)</span>
+                    <span><i class="fa-solid fa-calendar-days text-brand-secondary mr-1"></i> 29 Maggio 2026</span>
+                    <span><i class="fa-solid fa-clock text-brand-secondary mr-1"></i> 5 min lettura</span>
+                </div>
+
+                <p class="font-semibold text-white text-base sm:text-lg">
+                    Negli ultimi anni abbiamo assistito a una profonda trasformazione nel modo in cui le persone vivono l'hobby dei giochi da tavolo, di ruolo e delle carte collezionabili. I vecchi negozi di stampo puramente commerciale, limitati alla sola vendita di prodotti sugli scaffali, faticano a soddisfare le reali necessità di una community in forte crescita sul nostro territorio.
+                </p>
+
+                <h4 class="text-lg font-bold text-brand-secondary pt-2">1. Il declino del modello transazionale e la nascita del Centro Esperienziale</h4>
+                <p>
+                    Il mercato del gioco non è immune all'espansione dell'e-commerce digitale. Acquistare una scatola o un box di bustine online è ormai immediato. Tuttavia, ciò che uno schermo non potrà mai replicare è l'aggregazione sociale reale, il confronto, la spiegazione dedicata dei regolamenti e, soprattutto, l'emozione di sedersi insieme attorno allo stesso tavolo. Nel Luganese si riscontra un bisogno concreto di spazi organizzati che offrano qualcosa di più della semplice transazione commerciale. Le serate dedicate ai test dei giochi nascono per colmare questa distanza, offrendo un punto d'incontro dove neofiti ed esperti possono sedersi insieme e giocare senza dover prima decifrare ore di regolamento complesso.
+                </p>
+
+                <h4 class="text-lg font-bold text-brand-secondary pt-2">2. Collezionismo d'élite e la necessità di standard oggettivi</h4>
+                <p>
+                    Carte storiche come quelle di <em>Magic: The Gathering</em>, <em>Pokémon</em> o <em>Yu-Gi-Oh!</em> non sono più meri elementi di svago, ma veri e propri beni da collezione con mercati e scambi finanziari dedicati. Di fronte a pezzi rari il cui valore di mercato oscilla sensibilmente, la fiducia e la perizia tecnica diventano essenziali. Offrire un servizio di valutazione basato sull'analisi microscopica di superfici, angoli e bordi, incrociando i dati con i mercati internazionali, risponde alla necessità di dare certezze sia a chi vuole stimare la propria collezione storica, sia a chi sta investendo strategicamente in questo specifico settore.
+                </p>
+
+                <h4 class="text-lg font-bold text-brand-secondary pt-2">3. La pittura di miniature come legante artistico e sociale</h4>
+                <p>
+                    Un altro tassello straordinario della cultura ludica contemporanea è legato al modellismo. Dipingere le proprie miniature per giochi di ruolo o per wargame tridimensionali è un'attività meditativa, artistica ed estremamente appassionante. Spesso, tuttavia, l'appassionato si trova a lavorare in solitudine a casa propria, rischiando di perdersi o di arenarsi davanti alle difficoltà tecniche. La nostra sala polivalente nasce anche come hub formativo e creativo: un luogo dove condividere tecniche professionali, dall'uso accurato dei colori acrilici di precisione alle sfumature avanzate, sotto la guida di esperti del settore.
+                </p>
+
+                <h4 class="text-lg font-bold text-brand-secondary pt-2">4. Uno sguardo al futuro: l'aggregazione reale oltre lo schermo</h4>
+                <p>
+                    La digitalizzazione ha facilitato la connessione globale, ma ha anche parzialmente allontanato le persone dal contatto umano quotidiano. Investire in uno spazio fisico accogliente e strutturato a Lugano rappresenta la nostra risposta diretta a questa tendenza. Il futuro dei servizi ludici si gioca sulla capacità di proporre standard d'eccellenza che sappiano valorizzare sia il tempo libero che il valore economico delle collezioni della community ticinese.
+                </p>
+            </div>
+            <!-- Modal Footer -->
+            <div class="p-6 border-t border-brand-primary/20 bg-brand-dark/40 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span class="text-xs text-gray-400">Ti è piaciuto l'articolo? Iscriviti alla nostra newsletter per non perdere i prossimi approfondimenti!</span>
+                <a href="#contatti" id="modal-cta-btn" class="px-5 py-2.5 bg-gradient-to-r from-brand-primary to-brand-accent hover:from-brand-accent hover:to-brand-primary text-white text-sm font-semibold rounded-xl transition-all duration-300 whitespace-nowrap">
+                    <i class="fa-solid fa-calendar-check mr-2"></i>Iscriviti al Covo
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- BOOKING & CONTACT FORM (SALA POLIVALENTE & APPUNTAMENTI) -->
     <section id="contatti" class="py-24 bg-brand-panel/30 border-t border-brand-primary/10">
@@ -602,6 +661,46 @@
 
         // Initialize price on page load
         updateShippingPrice();
+
+        // Blog Modal Logic
+        const readBlogBtn = document.getElementById('read-blog-btn');
+        const closeBlogBtn = document.getElementById('close-blog-btn');
+        const blogModal = document.getElementById('blog-modal');
+        const blogModalContent = document.getElementById('blog-modal-content');
+        const modalCtaBtn = document.getElementById('modal-cta-btn');
+
+        function openBlog() {
+            blogModal.classList.remove('hidden');
+            setTimeout(() => {
+                blogModalContent.classList.remove('scale-95', 'opacity-0');
+                blogModalContent.classList.add('scale-100', 'opacity-100');
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Blocco dello scroll di sfondo
+        }
+
+        function closeBlog() {
+            blogModalContent.classList.remove('scale-100', 'opacity-100');
+            blogModalContent.classList.add('scale-95', 'opacity-0');
+            setTimeout(() => {
+                blogModal.classList.add('hidden');
+            }, 300);
+            document.body.style.overflow = ''; // Ripristino scroll di sfondo
+        }
+
+        readBlogBtn.addEventListener('click', openBlog);
+        closeBlogBtn.addEventListener('click', closeBlog);
+        
+        // Chiusura al clic esterno all'area dell'articolo
+        blogModal.addEventListener('click', (e) => {
+            if (e.target === blogModal) {
+                closeBlog();
+            }
+        });
+
+        // Chiusura automatica e reindirizzamento al modulo contatti
+        modalCtaBtn.addEventListener('click', () => {
+            closeBlog();
+        });
 
         // Simulated Podcast Player Logic (1-Minute Swiss Monopoly review)
         const podcastBtn = document.getElementById('podcast-play-btn');
