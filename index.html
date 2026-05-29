@@ -433,22 +433,29 @@
     <source src="percorso/del/tuo/file.mp3" type="audio/mpeg">
     Il tuo browser non supporta l'elemento audio.
 </audio>
-                    <div class="bg-brand-dark rounded-2xl p-4 border border-brand-primary/10 flex items-center gap-4">
-                        <button id="podcast-play-btn" class="w-12 h-12 rounded-full bg-brand-accent hover:opacity-90 flex items-center justify-center text-white text-lg transition-all focus:outline-none shadow-lg shadow-brand-accent/20">
-                            <i id="play-icon" class="fa-solid fa-play ml-1"></i>
-                        </button>
-                        <div class="flex-1 space-y-1">
-                            <span class="block text-xs font-bold text-white">Swiss Monopoly: Recensione e Target</span>
-                            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
-                                <div id="podcast-progress" class="bg-brand-accent h-full w-0 transition-all duration-300"></div>
-                            </div>
-                            <div class="flex justify-between text-[10px] text-gray-500">
-                                <span id="podcast-time">0:00</span>
-                                <span>1:00</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="bg-brand-panel border border-brand-primary/20 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
+    
+    <audio id="podcast-audio" src="https://raw.githubusercontent.com/simonebottinelli-del/test/main/episodio1.mp3" preload="metadata"></audio>
+
+    <div class="bg-brand-dark rounded-2xl p-4 border border-brand-primary/10 flex items-center gap-4">
+        <button id="podcast-play-btn" class="w-12 h-12 rounded-full bg-brand-accent hover:opacity-90 flex items-center justify-center text-white text-lg transition-all focus:outline-none shadow-lg shadow-brand-accent/20">
+            <i id="play-icon" class="fa-solid fa-play ml-1"></i>
+        </button>
+        
+        <div class="flex-1 space-y-1">
+            <span class="block text-xs font-bold text-white">Episodio 1 - Il Covo dei Giocatori</span>
+            
+            <div class="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden cursor-pointer" id="progress-container">
+                <div id="podcast-progress" class="bg-brand-accent h-full w-0 transition-all duration-100"></div>
+            </div>
+            
+            <div class="flex justify-between text-[10px] text-gray-500">
+                <span id="podcast-time">0:00</span>
+                <span id="podcast-duration">0:00</span>
+            </div>
+        </div>
+    </div>
+</div>
 
                 <!-- Featured Blog Post -->
                 <div class="lg:col-span-6 bg-brand-panel border border-brand-primary/20 rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
